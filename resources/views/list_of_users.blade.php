@@ -15,4 +15,5 @@
         </tr>
         @endforeach
     </tbody>
+    <a type="button" href="/create">Crear Usuario</a>
 </table>

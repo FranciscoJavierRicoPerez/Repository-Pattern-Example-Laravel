@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'UserController@index');
+Route::get('/create', 'UserController@create');
+Route::post('/create', 'UserController@store');
