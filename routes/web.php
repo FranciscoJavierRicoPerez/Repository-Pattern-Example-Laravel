@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'UserController@index');
 Route::get('/create', 'UserController@create');
 Route::post('/create', 'UserController@store');
+Route::post('/delete/{id}', 'UserController@destroy');
+Route::get('/update/{id}', 'UserController@update');
+Route::post('/update/{id}', 'UserController@update_user');

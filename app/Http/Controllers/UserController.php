@@ -36,4 +36,25 @@ class UserController extends Controller
         $this->userRepository->store_user($request);
         return redirect('/')->with('users', $this->userRepository->getAll());
     }
+
+    public function destroy($id){
+        $user = $this->userRepository->getUserById($id);
+        $this->userRepository->delete($user);
+        return redirect('/')->with('users', $this->userRepository->getAll()); 
+    }
+
+    public function update($id){
+        return view('update_user')->with('user', $this->userRepository->getUserById($id));
+    }
+
+    public function update_user(Request $request, $id){
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required|max:4|min:4'
+        ]);
+        $this->userRepository->update_user($request, $this->userRepository->getUserById($id));
+        return redirect('/')->with('users', $this->userRepository->getAll());
+    }
+
 }

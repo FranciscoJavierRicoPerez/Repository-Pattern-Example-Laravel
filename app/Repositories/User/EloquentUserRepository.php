@@ -10,6 +10,10 @@ class EloquentUserRepository implements UserRepository{
         return User::all();
     }
 
+    public function getUserById($id){
+        return User::where('id', '=', $id)->first();
+    }
+
     public function store_user(Request $request){
         $user = new User();
         $user->setName($request->name);
@@ -18,4 +22,11 @@ class EloquentUserRepository implements UserRepository{
         $user->save();
     }
 
+    public function delete($user){
+        $user->delete();
+    }
+
+    public function update_user(Request $request, $user){
+        $user->update($request->all());
+    }
 } 
